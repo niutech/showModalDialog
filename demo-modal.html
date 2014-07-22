@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>showModalDialog modal demo</title>
+    </head>
+    <body>
+      <h1>showModalDialog modal demo</h1>
+      <p>Dialog argments: <span id="arg"></span></p>
+      </form>
+      <script>
+	document.getElementById('arg').innerHTML = window.dialogArguments;
+	window.returnValue = "some return value";
+      </script>
+    </body>
+</html>
