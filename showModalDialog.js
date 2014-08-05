@@ -14,13 +14,14 @@
             }
         }
         var generator = gen();
-        var onFulfilled = continuer.bind(continuer, "next");
-        var onRejected = continuer.bind(continuer, "throw");
+        var onFulfilled = continuer.bind(continuer, 'next');
+        var onRejected = continuer.bind(continuer, 'throw');
         return onFulfilled();
-    }
-    window.showModalDialog = window.showModalDialog || function(url/*, arg, opt*/) {
-        var arg = arguments[1] || null; //dialog arguments
-        var opt = arguments[2] || "dialogWidth:300px;dialogHeight:200px"; //options: dialogTop;dialogLeft;dialogWidth;dialogHeight or CSS styles
+    };
+    window.showModalDialog = window.showModalDialog || function(url, arg, opt) {
+        url = url || ''; //URL of a dialog
+        arg = arg || null; //arguments to a dialog
+        opt = opt || 'dialogWidth:300px;dialogHeight:200px'; //options: dialogTop;dialogLeft;dialogWidth;dialogHeight or CSS styles
         return new Promise(function(resolve, reject) {
             var dialog = document.body.appendChild(document.createElement('dialog'));
             opt = opt.replace(/dialog/gi, '');

@@ -1,8 +1,9 @@
 (function() {
-    window.showModalDialog = window.showModalDialog || function(url/*, arg, opt, cb*/) {
-	var arg = arguments[1] || null; //dialog arguments
-	var opt = arguments[2] || "dialogWidth:300px;dialogHeight:200px"; //options: dialogTop;dialogLeft;dialogWidth;dialogHeight or CSS
-	var cb = arguments[3] || function() {}; //callback on dialog close
+    window.showModalDialog = window.showModalDialog || function(url, arg, opt, cb) {
+	url = url || ''; //URL of a dialog
+	arg = arg || null; //arguments to a dialog
+	opt = opt || 'dialogWidth:300px;dialogHeight:200px'; //options: dialogTop;dialogLeft;dialogWidth;dialogHeight or CSS styles
+	cb = cb || function() {}; //callback on dialog close
 	var dialog = document.body.appendChild(document.createElement('dialog'));
 	opt = opt.replace(/dialog/gi, '');
 	dialog.setAttribute('style', opt);
@@ -13,11 +14,10 @@
 		dialog.close();
 	});
 	dialog.addEventListener('close', function() {
-		dialog.returnValue = document.getElementById('dialog-body').contentWindow.returnValue;
+		var returnValue = document.getElementById('dialog-body').contentWindow.returnValue;
 		document.body.removeChild(dialog);
-		cb(dialog.returnValue);
+		cb(returnValue);
 	});
 	dialog.showModal();
-	return dialog.returnValue;
     };
 })();
