@@ -1,7 +1,7 @@
 ShowModalDialog Polyfill
 ========================
 
-This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 6 Generators. It was tested in the latest Google Chrome with the *Enable Experimental JavaScript* flag enabled in [chrome://flags](chrome://flags/#enable-javascript-harmony). Just include the following HTML code before using `showModalDialog` function: `<script src="showModalDialog.js"></script>`.
+This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 6 Generators. It was tested in the latest Google Chrome with the *Enable Experimental JavaScript* flag enabled in `chrome://flags/#enable-javascript-harmony`. Just include the following HTML code before using `showModalDialog` function: `<script src="showModalDialog.js"></script>`.
 
 Passing both `window.dialogArguments` and `window.returnValue` is supported, provided that the dialog document is on the same server as the host document.
 
@@ -10,7 +10,7 @@ ShowModalDialog Polyfill is using Promises, Generators, the `yield` keyword and 
 Syntax
 ------
 
-```
+```javascript
 spawn(function*() {
 
     //statements before showing a modal dialog
