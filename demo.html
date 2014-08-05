@@ -13,8 +13,9 @@
       <script src="showModalDialog.js"></script>
       <script>
 	document.getElementById('button').addEventListener('click', function() {
-	  window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px", function(ret) {
-	    alert("Returned: " + ret);
+	  return spawn(function*() {
+	    var ret = yield window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
+	    alert(ret);
 	  });
 	});
       </script>
