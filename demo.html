@@ -10,10 +10,11 @@
 	  <input id="button" type="button" value="Show Modal Dialog">
 	</p>
       </form>
+      <iframe src="http://ghbtns.com/github-btn.html?user=niutech&repo=showModalDialog&type=watch&count=true" height="30" width="118" frameborder="0" allowTransparency="true"></iframe>
       <script src="showModalDialog.js"></script>
       <script>
 	document.getElementById('button').addEventListener('click', function() {
-	  return spawn(function*() {
+	  spawn(function*() {
 	    var ret = yield window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
 	    alert(ret);
 	  });

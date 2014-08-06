@@ -26,7 +26,9 @@ Where:
 
  - *url* - a string that specifies the URL of the document to load and display;
  - *arguments* - a variant that specifies the arguments to use when displaying the document;
- - *options* - a string that specifies the dialog box style, using CSS or the following semicolon-delimited attributes: `dialogHeight:???px;dialogLeft:???px;dialogTop:???px;dialogWidth:???px`;
+ - *options* - a string that specifies the dialog box style, using CSS or the following semicolon-delimited attributes: `dialogHeight:???px;dialogLeft:???px;dialogTop:???px;dialogWidth:???px;`
+
+Both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
 
 Demo
 ----
