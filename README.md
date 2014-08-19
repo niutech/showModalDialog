@@ -5,7 +5,9 @@ This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element
 
 Passing both `window.dialogArguments` and `window.returnValue` is supported, provided that the dialog document is on the same server as the host document.
 
-ShowModalDialog Polyfill is using Promises, Generators, the `yield` keyword and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. An old version using a callback function is still available.
+ShowModalDialog Polyfill is using Promises, Generators, the `yield` keyword and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. If they are unavailable, the polyfill is using `eval` and JSON as a fallback, provided that statements are separated by new lines and `showModalDialog` runs only once in a function.
+
+There is still available an old version of the polyfill using a callback function.
 
 Syntax
 ------
@@ -22,18 +24,34 @@ spawn(function*() {
 });
 ```
 
-Where:
+or:
+
+```javascript
+function() {
+
+    //statements before showing a modal dialog
+
+    var returnValue = window.showModalDialog( url [, arguments, options] );
+
+    //statements after closing a modal dialog
+
+});
+```
+
+where:
 
  - *url* - a string that specifies the URL of the document to load and display;
  - *arguments* - a variant that specifies the arguments to use when displaying the document;
  - *options* - a string that specifies the dialog box style, using CSS or the following semicolon-delimited attributes: `dialogHeight:???px;dialogLeft:???px;dialogTop:???px;dialogWidth:???px;`
 
-Both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
+When using generators, both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
+
+When using a fallback, the `showModalDialog` function throws an exception to stop executing code until the modal is closed, then it `eval`s the remaining code of a caller function.
 
 Demo
 ----
 
-[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works in Google Chrome 37+ with the *Enable Experimental JavaScript* flag.
+[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome 37+ with the *Enable Experimental JavaScript* flag.
 
 License
 -------
