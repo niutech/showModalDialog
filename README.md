@@ -51,7 +51,7 @@ When using a fallback, the `showModalDialog` function throws an exception to sto
 Demo
 ----
 
-[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome 37+ with the *Enable Experimental JavaScript* flag.
+[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome 37+. The *Enable Experimental JavaScript* flag is only required for the yield method to work.
 
 License
 -------
