@@ -1,0 +1,19 @@
+{
+  "name": "showModalDialog-polyfill",
+  "main": "showModalDialog.js",
+  "version": "1.0.0",
+  "keywords": [
+    "IE",
+    "showModalDialog",
+    "javascript",
+    "polyfill"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xynova/showModalDialog"
+  },
+  "license": "Apache 2.0 License.",
+  "ignore": [
+    "bower_components"
+  ]
+}
