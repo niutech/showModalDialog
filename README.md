@@ -7,8 +7,6 @@ Passing both `window.dialogArguments` and `window.returnValue` is supported, pro
 
 ShowModalDialog Polyfill is using Promises, Generators, the `yield` keyword and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. If they are unavailable, the polyfill is using `eval` and JSON as a fallback, provided that statements are separated by new lines, the `showModalDialog` function is not nested and runs only once in a function.
 
-There is still available an old version of the polyfill using a callback function.
-
 Syntax
 ------
 
@@ -47,6 +45,8 @@ where:
 When using generators, both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
 
 When using a fallback, the `showModalDialog` function throws an exception to stop executing code until the modal is closed, then it `eval`s the remaining code of a caller function.
+
+In order to close the dialog from inside of it, invoke `parent.document.getElementsByTagName('dialog')[0].close();` provided that both documents have the same origin. 
 
 Demo
 ----
