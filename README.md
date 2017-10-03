@@ -1,7 +1,7 @@
 ShowModalDialog Polyfill
 ========================
 
-This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 6 Generators. It was tested in the latest Google Chrome with the *Enable Experimental JavaScript* flag enabled in `chrome://flags/#enable-javascript-harmony`. Just include the following HTML code before using `showModalDialog` function: `<script src="showModalDialog.js"></script>`.
+This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 6 Generators. It was tested in the latest Google Chrome with the *Enable Experimental JavaScript* flag enabled in `chrome://flags/#enable-javascript-harmony` and in the latest Mozilla Firefox with the *dom.dialog_element.enabled* preference set to *true* in `about:config`. Just include the following HTML code before using `showModalDialog` function: `<script src="showModalDialog.js"></script>`.
 
 Passing both `window.dialogArguments` and `window.returnValue` is supported, provided that the dialog document is on the same server as the host document.
 
@@ -44,7 +44,7 @@ where:
 
 When using generators, both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
 
-When using a fallback, the `showModalDialog` function throws an exception to stop executing code until the modal is closed, then it `eval`s the remaining code of a caller function.
+When using an `eval` fallback, the `showModalDialog` function throws an exception to stop executing code until the modal is closed, then it `eval`s the remaining code of a caller function.
 
 In order to close the dialog from inside of it, invoke `parent.document.getElementsByTagName('dialog')[0].close();` provided that both documents have the same origin. 
 
