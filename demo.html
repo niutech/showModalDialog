@@ -6,28 +6,36 @@
     <body>
       <h1>showModalDialog polyfill demo</h1>
       <form action="">
-	<p>
-	  <input id="button1" type="button" value="Show Modal Dialog using yield">
-	</p>
-	<p>
-	  <input id="button2" type="button" value="Show Modal Dialog using eval">
-	</p>
+        <p>
+          <input id="button1" type="button" value="Show Modal Dialog using yield"> <span id="result1"></span>
+        </p>
+        <p>
+          <input id="button2" type="button" value="Show Modal Dialog using async/await"> <span id="result2"></span>
+        </p>
+        <p>
+          <input id="button3" type="button" value="Show Modal Dialog using eval"> <span id="result3"></span>
+        </p>
       </form>
       <iframe src="https://ghbtns.com/github-btn.html?user=niutech&amp;repo=showModalDialog&amp;type=watch&amp;count=true" height="30" width="118" frameborder="0" allowTransparency="true"></iframe>
       <script src="showModalDialog.js"></script>
       <script>
-	document.getElementById('button1').addEventListener('click', function() {
-	  spawn(function*() {
-	    var ret = yield window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
-	    alert("Returned from modal: " + ret);
-	  });
-	});
-      </script>
-      <script>
-	document.getElementById('button2').addEventListener('click', function() {
-	  var ret = window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
-	  alert("Returned from modal: " + ret);
-	});
+        //using yield
+        document.getElementById('button1').addEventListener('click', function() {
+          spawn(function*() {
+            var ret = yield window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
+            document.getElementById('result1').innerText = "Returned from modal: " + ret;
+          });
+        });
+        //using async/await
+        document.getElementById('button2').addEventListener('click', async function() {
+          var ret = await window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
+          document.getElementById('result2').innerText = "Returned from modal: " + ret;
+        });
+        //using eval
+        document.getElementById('button3').addEventListener('click', function() {
+          var ret = window.showModalDialog("demo-modal.html", "some argument", "dialogWidth:500px;dialogHeight:200px");
+          document.getElementById('result3').innerText = "Returned from modal: " + ret;
+        });
       </script>
     </body>
 </html>

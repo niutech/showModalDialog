@@ -1,0 +1,14 @@
+{
+  "name": "showmodaldialog",
+  "version": "1.0.0",
+  "description": "window.showModalDialog polyfill using a <dialog> element",
+  "main": "showModalDialog.js",
+  "keywords": [
+    "showModalDialog",
+    "polyfill",
+	"dialog"
+  ],
+  "author": "niu tech",
+  "repository": "github:niutech/showModalDialog",
+  "license": "Apache-2.0"
+}

@@ -1,11 +1,13 @@
 ShowModalDialog Polyfill
 ========================
 
-This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 6 Generators. It was tested in the latest Google Chrome with the *Enable Experimental JavaScript* flag enabled in `chrome://flags/#enable-javascript-harmony` and in the latest Mozilla Firefox with the *dom.dialog_element.enabled* preference set to *true* in `about:config`. Just include the following HTML code before using `showModalDialog` function: `<script src="showModalDialog.js"></script>`.
+This is a `window.showModalDialog()` shim using a modal HTML5 `<dialog>` element and ECMAScript 2015 Generators or ECMAScript 2017 Async/Await. It was tested in the latest Google Chrome and in the latest Mozilla Firefox with the *dom.dialog_element.enabled* preference set to *true* in `about:config`. Just include the following HTML code before using `showModalDialog` function:
+
+    <script src="https://unpkg.com/showmodaldialog"></script>
 
 Passing both `window.dialogArguments` and `window.returnValue` is supported, provided that the dialog document is on the same server as the host document.
 
-ShowModalDialog Polyfill is using Promises, Generators, the `yield` keyword and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. If they are unavailable, the polyfill is using `eval` and JSON as a fallback, provided that statements are separated by new lines, the `showModalDialog` function is not nested and runs only once in a function.
+ShowModalDialog Polyfill is using Promises, Generators, `yield`, `async`, `await` and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. If they are unavailable, the polyfill is using `eval` and JSON as a fallback, provided that statements are separated by new lines, the `showModalDialog` function is not nested and runs only once in a function.
 
 Syntax
 ------
@@ -25,7 +27,21 @@ spawn(function*() {
 or:
 
 ```javascript
-function() {
+(async function() {
+
+    //statements before showing a modal dialog
+
+    var returnValue = await window.showModalDialog( url [, arguments, options] );
+
+    //statements after closing a modal dialog
+
+})();
+```
+
+or:
+
+```javascript
+(function() {
 
     //statements before showing a modal dialog
 
@@ -33,7 +49,7 @@ function() {
 
     //statements after closing a modal dialog
 
-});
+})();
 ```
 
 where:
@@ -42,7 +58,7 @@ where:
  - *arguments* - a variant that specifies the arguments to use when displaying the document;
  - *options* - a string that specifies the dialog box style, using CSS or the following semicolon-delimited attributes: `dialogHeight:???px;dialogLeft:???px;dialogTop:???px;dialogWidth:???px;`
 
-When using generators, both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
+When using generators or async/await, both `showModalDialog` and `spawn` functions are Promises, so you can use their `then` method and `yield` them.
 
 When using an `eval` fallback, the `showModalDialog` function throws an exception to stop executing code until the modal is closed, then it `eval`s the remaining code of a caller function.
 
@@ -51,7 +67,7 @@ In order to close the dialog from inside of it, invoke `parent.document.getEleme
 Demo
 ----
 
-[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome 37+. The *Enable Experimental JavaScript* flag is only required for the yield method to work.
+[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome.
 
 License
 -------
