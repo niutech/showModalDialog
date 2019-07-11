@@ -145,6 +145,9 @@
             var returnValue = lastDialog.querySelector('#dialog-body').contentWindow.returnValue;
             dialogDocument.body.removeChild(dialog);
             nextStmts[0] = nextStmts[0].replace(new RegExp('(window\.)?' + callerName + '\(.*\)' , 'g'), JSON.stringify(returnValue));
+            var unclosedParenthesis = (nextStmts[0].match(/\(/g) || []).length - (nextStmts[0].match(/\)/g) || []).length;
+            var closeParenthesis = repeat(')', unclosedParenthesis);
+            nextStmts[0] += closeParenthesis;
             var decodedStmts = nextStmts.join('\n').replace(/^function\s+\(\s*\)\s*{/, '');
             var unopenedBraces = (decodedStmts.match(/}/g) || []).length - (decodedStmts.match(/{/g) || []).length;
             var openBraces = repeat('{', unopenedBraces);
