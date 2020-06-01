@@ -9,6 +9,8 @@ Passing both `window.dialogArguments` and `window.returnValue` is supported, pro
 
 ShowModalDialog Polyfill is using Promises, Generators, `yield`, `async`, `await` and the [`spawn` function](https://gist.github.com/jakearchibald/31b89cba627924972ad6) by Jake Archibald. If they are unavailable, the polyfill is using `eval` and JSON as a fallback, provided that statements are separated by new lines, the `showModalDialog` function is not nested and runs only once in a function.
 
+Please note that [native `showModalDialog` support](https://developer.mozilla.org/en-US/docs/Web/API/Window/showModalDialog) is considered deprecated and it was removed from Chrome 43 and Firefox 56.
+
 Syntax
 ------
 
