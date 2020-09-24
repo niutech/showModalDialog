@@ -25,6 +25,7 @@
         var caller = showModalDialog.caller.toString();
         var dialog = document.body.appendChild(document.createElement('dialog'));
         dialog.setAttribute('style', opt.replace(/dialog/gi, ''));
+        dialog.setAttribute('id','modalDialog');
         dialog.innerHTML = '<a href="#" id="dialog-close" style="position: absolute; top: 0; right: 5px; font-size: 20px; color: #000; text-decoration: none; outline: none;">&times;</a><iframe id="dialog-body" src="' + url + '" style="border: 0; width: 100%; height: 100%;"></iframe>';
         document.getElementById('dialog-body').contentWindow.dialogArguments = arg;
         document.getElementById('dialog-close').addEventListener('click', function(e) {
