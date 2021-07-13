@@ -69,7 +69,7 @@ In order to close the dialog from inside of it, invoke `parent.document.getEleme
 Demo
 ----
 
-[Here is a live demo](http://niutech.github.com/showModalDialog/demo.html). Works best in Google Chrome.
+[Here is a live demo](http://niutech.github.io/showModalDialog/demo.html). Works best in Google Chrome.
 
 License
 -------
