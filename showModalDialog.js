@@ -22,7 +22,7 @@
         url = url || ''; //URL of a dialog
         arg = arg || null; //arguments to a dialog
         opt = opt || 'dialogWidth:300px;dialogHeight:200px'; //options: dialogTop;dialogLeft;dialogWidth;dialogHeight or CSS styles
-        var caller = showModalDialog.caller.toString();
+        var caller = arguments.callee.caller.toString();
         var dialog = document.body.appendChild(document.createElement('dialog'));
         dialog.setAttribute('style', opt.replace(/dialog/gi, ''));
         dialog.innerHTML = '<a href="#" id="dialog-close" style="position: absolute; top: 0; right: 5px; font-size: 20px; color: #000; text-decoration: none; outline: none;">&times;</a><iframe id="dialog-body" src="' + url + '" style="border: 0; width: 100%; height: 100%;"></iframe>';
