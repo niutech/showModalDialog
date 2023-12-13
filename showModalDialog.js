@@ -52,7 +52,7 @@
         dialog.addEventListener('close', function() {
             var returnValue = document.getElementById('dialog-body').contentWindow.returnValue;
             document.body.removeChild(dialog);
-            nextStmts[0] = nextStmts[0].replace(/(window\.)?showModalDialog\(.*\)/g, JSON.stringify(returnValue));
+            nextStmts[0] = nextStmts[0].replace(/window\.?showModalDialog\(.*\)/, JSON.stringify(returnValue));
             eval('{\n' + nextStmts.join('\n'));
         });
         throw 'Execution stopped until showModalDialog is closed';
